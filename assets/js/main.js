@@ -28,21 +28,16 @@ var iUp = (function () {
 })();
 
 function getBingImages(imgUrls) {
-	/**
-	 * 获取Bing壁纸
-	 * 先使用 GitHub Action 每天获取 Bing 壁纸 URL 并更新 images.json 文件
-	 * 然后读取 images.json 文件中的数据
-	 */
-	var indexName = "bing-image-index";
-	var index = sessionStorage.getItem(indexName);
-	var panel = document.querySelector('#panel');
-	if (isNaN(index) || index == 7) index = 0;
-	else index++;
-	var imgUrl = imgUrls[index];
-	var url = "https://www.cn.bing.com" + imgUrl;
-	panel.style.background = "url('" + url + "') center center no-repeat #666";
-	panel.style.backgroundSize = "cover";
-	sessionStorage.setItem(indexName, index);
+    /**
+     * 获取Bing壁纸（修改为固定背景）
+     */
+    var panel = document.querySelector('#panel');
+    // 替换为你的图片 URL（本地路径或在线地址）
+    var url = "https://xianqingwenqi.dpdns.org/i/2025/05/11/549646.webp"; // 或 "assets/images/local-bg.jpg"
+    panel.style.background = "url('" + url + "') center center no-repeat #666";
+    panel.style.backgroundSize = "cover";
+    // 可选：如果不需要记录索引，可移除 sessionStorage 相关代码
+    // sessionStorage.setItem(indexName, index);
 }
 
 function decryptEmail(encoded) {
